@@ -12,7 +12,14 @@ const CodeEditorWindow = ({ onChange, language, code, theme }) => {
   };
 
   return (
-    <Box width={"100%"} height={"100%"}  boxShadow='sm' borderRadius={"0.5rem"}>
+    <Box
+      className="overlay"
+      borderRadius="md"
+      overflow="hidden"
+      width="100%"
+      height="100%"
+      boxShadow="4xl"
+    >
       <Editor
         height="85vh"
         width={`100%`}
