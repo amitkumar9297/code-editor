@@ -1,0 +1,55 @@
+import { Box } from "@chakra-ui/react";
+import React from "react";
+
+const OutputWindow = ({ outputDetails }) => {
+  const getOutput = () => {
+    let statusId = outputDetails?.status?.id;
+
+    if (statusId === 6) {
+      // compilation error
+      return (
+        <pre style={{ padding: "4px,2px", color: "rgb(239,68,68)" }}>
+          {atob(outputDetails?.compile_output)}
+        </pre>
+      );
+    } else if (statusId === 3) {
+      return (
+        <pre style={{ padding: "4px,2px", color: "rgb(239,68,68)" }}>
+          {atob(outputDetails.stdout) !== null
+            ? `${atob(outputDetails.stdout)}`
+            : null}
+        </pre>
+      );
+    } else if (statusId === 5) {
+      return (
+        <pre style={{ padding: "4px,2px", color: "rgb(239,68,68)" }}>
+          {`Time Limit Exceeded`}
+        </pre>
+      );
+    } else {
+      return (
+        <pre style={{ padding: "4px,2px", color: "rgb(239,68,68)" }}>
+          {atob(outputDetails?.stderr)}
+        </pre>
+      );
+    }
+  };
+  return (
+    <>
+      <h1 className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 mb-2">
+        Output
+      </h1>
+      <Box
+        w={"100%"}
+        h={56}
+        bg={"#1e293b"}
+        borderRadius={"0.5rem"}
+        color={"white"}
+      >
+        {outputDetails ? <>{getOutput()}</> : null}
+      </Box>
+    </>
+  );
+};
+
+export default OutputWindow;
