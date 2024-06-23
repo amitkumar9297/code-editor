@@ -1,7 +1,10 @@
 import {
   Box,
   Button,
+  FormControl,
+  FormLabel,
   HStack,
+  Input,
   Stack,
   VStack,
   useColorModeValue,
@@ -212,6 +215,38 @@ export const Landing = () => {
     });
   };
 
+  const downloadCode = (code, filename = "code.js") => {
+    const blob = new Blob([code], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  // const importCode = (event) => {
+  //   const file = event.target.files[0]; // Get the first file from the input
+
+  //   if (file) {
+  //     const reader = new FileReader(); // Create a new FileReader instance
+
+  //     reader.onload = (e) => {
+  //       const fileContent = e.target.result; // Read the file content
+  //       setCode(fileContent.trim()); // Update the code state with the file content
+  //     };
+
+  //     reader.onerror = (e) => {
+  //       console.error("Error reading file:", e);
+  //       // Optionally show an error toast or message to the user
+  //     };
+
+  //     reader.readAsText(file); // Read the file as text
+  //   }
+  // };
+
   return (
     <>
       <ToastContainer
@@ -243,6 +278,51 @@ export const Landing = () => {
         <Box px={3} py={2}>
           <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
         </Box>
+        <Box px={3} py={2}>
+          <Button
+            onClick={() => downloadCode(code)}
+            // mt={4}
+            borderWidth="2px"
+            zIndex={10}
+            borderRadius="md"
+            px={4}
+            py={2}
+            // bg={"teal.500"}
+            colorScheme="teal"
+            transition="box-shadow 200ms"
+            _hover={{ boxShadow: hoverBoxShadow }}
+            width={"10rem"}
+            height={"2.8rem"}
+          >
+            Export Code
+          </Button>
+        </Box>
+        {/* <Box px={3} py={2}>
+          <FormControl>
+            <Input
+              id="import-button"
+              type="file"
+              accept=".js,.txt,.json,.html,.css,.py,.java,.cpp,.c"
+              onChange={importCode}
+              display="none"
+            />
+            <Button
+              as="label"
+              htmlFor="import-button"
+              colorScheme="teal"
+              // mt={4}
+              borderWidth="2px"
+              zIndex={10}
+              borderRadius="md"
+              width={"10rem"}
+              height={"3rem"}
+              px={4}
+              py={2}
+            >
+              Import Code
+            </Button>
+          </FormControl>
+        </Box> */}
       </Stack>
       <Stack
         p={"4"}
