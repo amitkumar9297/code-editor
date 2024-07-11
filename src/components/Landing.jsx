@@ -280,7 +280,10 @@ export const Landing = () => {
         </Box>
         <Box px={3} py={2}>
           <Button
-            onClick={() => downloadCode(code)}
+            onClick={() => {
+              alert("Change file extension according to Langauage ");
+              downloadCode(code);
+            }}
             // mt={4}
             borderWidth="2px"
             zIndex={10}
