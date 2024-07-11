@@ -267,7 +267,7 @@ export const Landing = () => {
         h={"0.28rem"}
       />
       <Stack
-        direction={{ base: "column", sm: "row" }}
+        direction={{ base: "column", lg: "row" }}
         justifyContent={{ base: "center", sm: "flex-start" }}
         gap={"0.5rem"}
         alignItems={{ base: "center", sm: "flex-start" }}
