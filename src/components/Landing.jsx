@@ -268,9 +268,9 @@ export const Landing = () => {
       />
       <Stack
         direction={{ base: "column", lg: "row" }}
-        justifyContent={{ base: "center", sm: "flex-start" }}
+        justifyContent={{ base: "center", lg: "flex-start" }}
         gap={"0.5rem"}
-        alignItems={{ base: "center", sm: "flex-start" }}
+        alignItems={{ base: "center", lg: "flex-start" }}
       >
         <Box px={3} py={2}>
           <LanguagesDropdown onSelectChange={onSelectChange} />
